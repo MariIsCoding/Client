@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+}
+
+
+.title{
+    font-size: 3em;
+    text-align: center;
+}
+
+.btn{
+    font-size: 18px;
+    padding: 10px 20px;
+    margin: 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity .3s ease;
+}
+#start{
+    background-color: green;
+}
+#reset{
+    background-color: grey;
+}
+#stop{
+    background: red;;
+}
+button:hover{
+    opacity: 70%;
+}
+
+.timerContainer{
+    display: flex;
+    background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    width: 100vh;
+    flex-direction: column;
+    box-shadow: -10px 5px 5px rgba(0,0,0,.5);
+    border-radius: 20px;
+}
+
+.uiContainer, .buttonWrapper{
+    display: flex;
+
+}
+.studyTimeUI, .breakTimeUI{
+    display: flex;
+}
+
+#timer{
+    font-size: 80px;
+    margin-bottom: 20px;
+}
+
+.uiContainer{
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+
+.hidden{
+    display: none;
+}
+
+.disable{
+    opacity: 50%;
+}
