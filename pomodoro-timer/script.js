@@ -13,7 +13,7 @@ const uiContainer = document.querySelector('.uiContainer')
 
 
 let time = 1500;
-let initalTime = time
+const initalTime = time
 let breakTime = 300;
 let longBreakTime = 1800;
 let interval;
@@ -29,6 +29,12 @@ function updateSetStudyTime(){
     let formmattedTime = `${min.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`
     studySet.innerHTML = formmattedTime
     updateTimer()
+}
+function updateBreakTime(){
+    let min = Math.floor(breakTime/60);
+    let sec = breakTime%60;
+    let formmattedTime = `${min.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`
+    breakSet.innerHTML = formmattedTime
 }
 function updateTimer(){
     let min = Math.floor(time/60);
@@ -46,6 +52,8 @@ function startTimer(){
     },1000)
 
     uiContainer.classList.add('hidden')
+    startBtn.classList.add('disable')
+    startBtn.setAttribute('disabled', '#start')
 
 }
 
@@ -58,24 +66,59 @@ function resetTimer() {
     studyTimes = 0;
     breakTimes = 0;
     updateTimer()
+    updateSetStudyTime()
     uiContainer.classList.remove('hidden')
+    startBtn.classList.remove('disable')
+    startBtn.removeAttribute('disabled')
 }
 
 
 //Stop Timer
 function stopTimer(){
     clearInterval(interval)
+    startBtn.classList.remove('disable')
+    startBtn.removeAttribute('disabled')
 }
 
+
+
+//User Set Time/Break
 function addMinute(){
     time += 60
     updateSetStudyTime()
-
+    
+}
+function subMinute(){
+    time -= 60
+    updateSetStudyTime()
+}
+function addBreakTime(){
+    if(breakTime >= time/5){
+        breakTime = breakTime
+    }else{
+        breakTime += 60
+        updateBreakTime()
+    }
+}
+function subBreakTime(){
+    breakTime -= 60;
+    updateBreakTime()
 }
 
 
 
-startBtn.addEventListener('click', startTimer);
-resetBtn.addEventListener('click', resetTimer);
-stopBtn.addEventListener('click', stopTimer);
-addTime.addEventListener('click', addMinute)
+function main(){
+
+    
+
+
+
+    startBtn.addEventListener('click', startTimer);
+    resetBtn.addEventListener('click', resetTimer);
+    stopBtn.addEventListener('click', stopTimer);
+    addTime.addEventListener('click', addMinute);
+    subTime.addEventListener('click', subMinute);
+    addBreak.addEventListener('click', addBreakTime);
+    subBreak.addEventListener('click', subBreakTime);
+}
+main()
